@@ -5,7 +5,7 @@ import List from "./components/List.js"
 import Alert from "./components/Alert.js"
 
 const initialExpenses = [
-  { id: Math.random() * 100000, description: "Sieeema", amount: 3000 },
+  { id: Math.random() * 100000, description: "Lolo", amount: 3000 },
   { id: Math.random() * 100000, description: "Lol", amount: 6969 },
 ];
 
