@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Item = ({ expense: { id, description, amount}, categories }) => {
+const Item = ({ expense: { id, description, amount} }, { categories }) => {
 
   return (
     <div class="list">

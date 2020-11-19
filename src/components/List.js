@@ -1,14 +1,15 @@
 import React from 'react';
 import Item from './Item.js';
 
-const List = ({ expenses, categories }) => {
+const List = ({ expenses }, { categories }) => {
 
   return (
     <>
+      {categories.map(category => { return category })}
       <div class="list">
       {expenses.map(expense => {
           return (
-            <Item expense={expense} categories={categories.name} key={expense.id}/>
+            <Item expense={expense} category={categories.name} key={expense.id}/>
           );
         })}
         
