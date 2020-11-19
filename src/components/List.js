@@ -1,19 +1,20 @@
 import React from 'react';
 import Item from './Item.js';
 
-const List = ({ expenses }) => {
+const List = ({ expenses, categories }) => {
 
   return (
     <>
-        {expenses.map(expense => {
+      <div class="list">
+      {expenses.map(expense => {
           return (
-            <Item expense={expense} key={expense.id}/>
+            <Item expense={expense} categories={categories.name} key={expense.id}/>
           );
         })}
         
           {expenses.lenght > 0 && (<button>Clear inputs</button>)}
-
-      
+      </div>
+        
     </>
   );
 }

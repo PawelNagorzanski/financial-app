@@ -1,30 +1,44 @@
 
 import React from "react";
+import Category from "./Category";
 
-const Form = ({handleAmount, handleDescription, handleSubmit, description, amount}) => {
+const Form = ({handleAmount, handleDescription, handleSubmit, description, amount, categories}) => {
       return (
         <form onSubmit={handleSubmit}>
-          <h3>Input description:</h3>
-          <input 
-            type="text" 
-            id="desc" 
-            name="desc" 
-            placeholder="Description of input. Example: Food "
-            onChange={handleDescription}
-            value={description} 
-            />
-
-          <h3>Input amount:</h3>
-          <input 
-            type="value" 
-            id="amou" 
-            name="amou" 
-            placeholder="How much? Example: 10"
-            onChange={handleAmount}
-            value={amount} 
-            />
-
-          <button type="submit">Submit</button>
+            <div class="column">
+              <h3>Input amount:</h3>
+              <input 
+                class="input"
+                type="number"
+                placeholder="How much"
+                onChange={handleAmount}
+                value={amount} 
+                />
+            </div>
+            <div class="column">
+              <h3>Input description:</h3>
+              <input 
+                class="input1"
+                placeholder="Description of input "
+                onChange={handleDescription}
+                value={description} 
+                />
+            </div>
+            <div class="column">
+              <label for="category-select">
+            <div class="row">
+              <h3>Choose category: </h3>
+            </div>
+            <div class="column">
+              <div class="select-box">
+                <select>
+                  <Category categories={categories}/>
+                </select>
+              <button type="submit" class="submit">Submit</button>     
+              </div>
+            </div>
+              </label>
+            </div>
         </form>
       );
   }

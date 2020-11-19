@@ -2,7 +2,7 @@ import React from 'react'
 
 const Alert = ({ text }) => {
 return (
-  <div>{text}</div>
+  <div style={{backgroundColor: "red"}}>{text}</div>
   )
 }
 
