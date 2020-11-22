@@ -2,7 +2,8 @@
 import React from "react";
 import Category from "./Category";
 
-const Form = ({handleAmount, handleDescription, handleSubmit, description, amount, categories}) => {
+const Form = ({handleAmount, handleDescription, handleCategory, handleSubmit, description, amount, SelectedCategory}) => {
+
       return (
         <form onSubmit={handleSubmit}>
             <div class="column">
@@ -31,8 +32,8 @@ const Form = ({handleAmount, handleDescription, handleSubmit, description, amoun
             </div>
             <div class="column">
               <div class="select-box">
-                <select>
-                  <Category categories={categories}/>
+                <select value={SelectedCategory} onChange={handleCategory}>
+                  <Category />
                 </select>
               <button type="submit" class="submit">Submit</button>     
               </div>

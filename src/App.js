@@ -1,4 +1,4 @@
-import React, {useEffect ,useState} from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Form from "./components/Form.js";
 import List from "./components/List.js"
@@ -6,16 +6,16 @@ import Alert from "./components/Alert.js"
 
 function App() {
   const initialExpenses = [
-    { id: Math.random() * 100000, description: "Heyy", amount: 3000, categories: [] },
-    { id: Math.random() * 100000, description: "Lol", amount: 6969, categories: [] },
+    { id: Math.random() * 100000, description: "", amount: 0, SelectedCategory: [] },
   ];
 
   const [expenses, setExpeneses] = useState(initialExpenses);
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState("");
-  const [alert, setAlert] = useState({show: false})
-  const [categories, setCategories] = useState([]);
+  const [alert, setAlert] = useState({show: false});
+  const [SelectedCategory, setSelectedCategory] = useState([]);
   
+  console.log(SelectedCategory);
   const handleDescription = e => {
     console.log("desc:" + e.target.value);
     setDescription(e.target.value);
@@ -26,11 +26,16 @@ function App() {
     setAmount(e.target.value);
   }
 
+  const handleCategory = e => {
+    const value = e.target.value;
+    setSelectedCategory(value);
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
 
     if(amount > 0 || description !== "") {
-      var singleExpenses = {id: Math.random() * 100000, description, amount, categories}
+      var singleExpenses = {id: Math.random() * 100000, description, amount, SelectedCategory}
       setExpeneses([...expenses, singleExpenses]);
       setAmount("");
       setDescription("");
@@ -45,14 +50,6 @@ function App() {
     setTimeout(() => {setAlert({show: false})}, 2000)
   }
 
-  useEffect(() => {
-    fetch('/api/categories')
-    .then(response => response.json())
-    .then((response) => setCategories(response))
-
-    .catch(() => console.log("Error")) 
-  }, [])
-
   return (
     <>
       {alert.show && <Alert text={alert.text} />}
@@ -64,13 +61,13 @@ function App() {
         </div>
         <Form amount={amount}
               description={description} 
-              categories={categories}
+              SelectedCategory={SelectedCategory}
               handleAmount={handleAmount} 
-              handleDescription={handleDescription} 
+              handleDescription={handleDescription}
+              handleCategory={handleCategory} 
               handleSubmit={handleSubmit} />
       </div>
-      <List expenses={expenses}
-            categories={categories} />
+      <List expenses={expenses} />
     </>
   );
 }
