@@ -13,7 +13,7 @@ const Category = () => {
   return (
   <>
     {categories.map(category => {
-      return <option>{category.name}</option>; // Give value of picked category to Item
+      return <option>{category.name}</option>;
     })}
   </>
   );

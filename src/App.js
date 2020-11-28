@@ -6,7 +6,7 @@ import Alert from "./components/Alert.js"
 
 function App() {
   const initialExpenses = [
-    { id: Math.random() * 100000, description: "", amount: 0, SelectedCategory: [] },
+    { id: Math.random() * 100000, description: "Example", amount: 0, SelectedCategory: [""] },
   ];
 
   const [expenses, setExpeneses] = useState(initialExpenses);
@@ -15,20 +15,17 @@ function App() {
   const [alert, setAlert] = useState({show: false});
   const [SelectedCategory, setSelectedCategory] = useState([]);
   
-  console.log(SelectedCategory);
+
   const handleDescription = e => {
-    console.log("desc:" + e.target.value);
     setDescription(e.target.value);
   }
 
   const handleAmount = e => {
-    console.log("amo:" + e.target.value);
     setAmount(e.target.value);
   }
 
   const handleCategory = e => {
-    const value = e.target.value;
-    setSelectedCategory(value);
+    setSelectedCategory(e.target.value);
   }
 
   const handleSubmit = e => {
@@ -67,7 +64,8 @@ function App() {
               handleCategory={handleCategory} 
               handleSubmit={handleSubmit} />
       </div>
-      <List expenses={expenses} />
+      <List expenses={expenses}
+             setExpeneses={setExpeneses}/>
     </>
   );
 }

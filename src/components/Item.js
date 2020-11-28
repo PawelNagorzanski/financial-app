@@ -1,14 +1,15 @@
 import React from 'react';
 
-const Item = ({ expense: { id, description, amount, SelectedCategory } }) => {
-
+const Item = ({ expense: { id, description, amount, SelectedCategory }, handleDelete }) => {
   return (
     <div class="list">
       <tr>
-        <td>{description}</td> 
-        <td>{SelectedCategory}</td>
         <td>{amount}$</td>
+        <td>{SelectedCategory}</td>
+        <td>{description}</td> 
+        <button class="delete_button" onClick={handleDelete}>Delete</button>
       </tr>
+      
     </div>
   );
 };
