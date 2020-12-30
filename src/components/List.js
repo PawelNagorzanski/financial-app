@@ -20,9 +20,6 @@ const List = ({ expenses, setExpeneses } ) => {
             );
           })} 
     </>
-
-
   );
-  
 }
 export default List;

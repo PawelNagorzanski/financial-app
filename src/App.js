@@ -15,7 +15,6 @@ function App() {
   const [alert, setAlert] = useState({show: false});
   const [SelectedCategory, setSelectedCategory] = useState([]);
   
-
   const handleDescription = e => {
     setDescription(e.target.value);
   }
@@ -65,7 +64,7 @@ function App() {
               handleSubmit={handleSubmit} />
       </div>
       <List expenses={expenses}
-             setExpeneses={setExpeneses}/>
+            setExpeneses={setExpeneses}/>
     </>
   );
 }
