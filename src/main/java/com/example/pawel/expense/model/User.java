@@ -20,6 +20,7 @@ public class User {
 	
 	@Id
 	private Long id;
+
 	
 	private String name;
 	
@@ -36,6 +37,14 @@ public class User {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getName() {
 		return name;
@@ -45,20 +54,14 @@ public class User {
 		this.name = name;
 	}
 
-	public String getEmail() {
-		return email;
-	}
+	
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public Set<Category> getCategory() {
-		return category;
-	}
-
-	public void setCategory(Set<Category> category) {
-		this.category = category;
-	}
+//	public Set<Category> getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(Set<Category> category) {
+//		this.category = category;
+//	}
 
 }
