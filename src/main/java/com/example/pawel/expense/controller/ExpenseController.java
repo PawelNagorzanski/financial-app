@@ -47,31 +47,19 @@ public class ExpenseController {
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
-		
 	}
-	
 	
 	@PostMapping("/expense")
-	Expense createExpense(@RequestBody Expense newExpense) {
-		return expenseRepository.save(newExpense);
-		
+	ResponseEntity<Expense> createExpense(@Valid @RequestBody Expense expense) throws URISyntaxException {
+		Expense result = expenseRepository.save(expense);
+		return ResponseEntity.created(new URI("/api/expense/" + result.getId())).body(result);
 	}
-//	@PostMapping("/expenses")
-//	ResponseEntity<Expense> createExpense(@RequestBody Expense expense) {
-//		try {
-//			Expense _expense = expenseRepository.save(expense);
-//			return new ResponseEntity<>(_expense, HttpStatus.CREATED);
-//			
-//		} catch (Exception e) {
-//			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-//		}
-//	}
 	
 	@DeleteMapping("/expenses/{id}")
 	ResponseEntity<?> deleteExpense(@PathVariable Long id) {
 		try {
 			expenseRepository.deleteById(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+			return ResponseEntity.ok().build();
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 

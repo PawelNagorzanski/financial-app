@@ -27,12 +27,29 @@ function App() {
     setSelectedCategory(e.target.value);
   }
 
+  const httpPost = data => {
+    console.log(data);
+    return fetch('http://localhost:8080/api/expenses', {
+      method: 'POST',
+      mode: 'CORS',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      
+    }).then(res => {
+      return res;
+    }).catch(err => err);
+    
+  }
+
   const handleSubmit = e => {
     e.preventDefault();
 
     if(amount > 0 || description !== "") {
       var singleExpenses = {id: Math.random() * 100000, description, amount, SelectedCategory}
       setExpeneses([...expenses, singleExpenses]);
+      httpPost(singleExpenses);
       setAmount("");
       setDescription("");
       handleAlert({text: "Added"});
