@@ -16,13 +16,6 @@ class Category extends Component {
     this.setState({ categories: body, isLoading: false });
   }
 
-  // const [categories, setCategories] = useState([]);
-
-  // useEffect(() => { fetch('/api/categories/') 
-  //   .then(response => response.json())
-  //   .then(data => setCategories(data))
-  //   .catch((e) => console.log("Error"))
-  // }, [categories] ) 
 render() {
   const {categories, isLoading} = this.state;
   

@@ -27,20 +27,15 @@ function App() {
     setSelectedCategory(e.target.value);
   }
 
-  const httpPost = data => {
-    console.log(data);
-    return fetch('http://localhost:8080/api/expenses', {
+  async function httpPost(data) {
+    await fetch('/api/expense', { // http://localhost:8080/api/expenses
       method: 'POST',
-      mode: 'CORS',
       body: JSON.stringify(data),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
       }
-      
-    }).then(res => {
-      return res;
-    }).catch(err => err);
-    
+    })
   }
 
   const handleSubmit = e => {
