@@ -31,11 +31,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	}
 	
 	public void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-        .antMatchers("/").permitAll()
+        http.csrf().disable().authorizeRequests()
+        .antMatchers("/**").permitAll()
         .anyRequest().authenticated()
         .and()
         .oauth2Login()
+        .loginPage("/login").permitAll()
         .and()
         .logout().logoutSuccessUrl("/");
 	}
