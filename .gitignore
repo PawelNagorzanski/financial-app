@@ -1,5 +1,5 @@
-\src\main\resources\Data.sql
-\src\main\resources\application.properties
+/src/main/resources/Data.sql
+/src/main/resources/application.properties
 /node_modules
 HELP.md
 target/
