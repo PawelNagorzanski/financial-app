@@ -1,6 +1,10 @@
 ### Sensitive Data ###
-application.properties
-Data.sql
+/src/main/resources/application.properties
+/src/main/resources/*.properties
+!/src/main/resources/application.properties
+src/main/resources/application.properties
+/src/main/resources/*.properties
+/src/main/resources/*.sql
 
 /node_modules
 HELP.md
