@@ -1,9 +1,15 @@
 package com.example.pawel.expense.model;
 
+import java.util.Collection;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,20 +21,28 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Data
-@Table(name="user")
 public class User {
 	
 	@Id
 	private Long id;
 
-	
 	private String name;
 	
 	private String email;
 	
-	@OneToMany
-	private Set<Category> category;
+	private String password;
 
+	private Collection<Role> category;
+
+	public User(String name, String email, String password, Collection<Role> category) {
+		super();
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.category = category;
+		
+	}
+	
 	/* Getters */
 	public Long getId() {
 		return id;
@@ -54,14 +68,11 @@ public class User {
 		this.name = name;
 	}
 
-	
+	public String getPassword() {
+		return password;
+	}
 
-//	public Set<Category> getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(Set<Category> category) {
-//		this.category = category;
-//	}
-
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }
