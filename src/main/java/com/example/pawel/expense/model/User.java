@@ -3,35 +3,25 @@ package com.example.pawel.expense.model;
 import java.util.Collection;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
-@Data
+@Table(name = "users")
 public class User {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(nullable = false, length = 30)
 	private String name;
-	
+	@Column(nullable = false, unique = true, length = 45)
 	private String email;
-	
 	private String password;
-
 	private Collection<Role> category;
 
 	public User(String name, String email, String password, Collection<Role> category) {
@@ -42,7 +32,13 @@ public class User {
 		this.category = category;
 		
 	}
-	
+
+	// problem
+	public User() {
+
+	}
+
+
 	/* Getters */
 	public Long getId() {
 		return id;
