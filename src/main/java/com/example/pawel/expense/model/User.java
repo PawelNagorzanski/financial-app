@@ -1,59 +1,34 @@
 package com.example.pawel.expense.model;
 
-import java.util.Collection;
 import java.util.Set;
-
-import javax.persistence.*;
-
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name = "users")
+@Data
+@Table(name="user")
 public class User {
-	
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private String id;
 
-	@Column(nullable = false, length = 30)
-	private String name;
-	@Column(nullable = false, unique = true, length = 45)
+	private String  name;
+
 	private String email;
-	private String password;
-	private Collection<Role> category;
 
-	public User(String name, String email, String password, Collection<Role> category) {
-		super();
-		this.name = name;
-		this.email = email;
-		this.password = password;
-		this.category = category;
-		
-	}
-
-	// problem
-	public User() {
-
-	}
-
-
-	/* Getters */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 
 	public String getName() {
@@ -64,11 +39,11 @@ public class User {
 		this.name = name;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

@@ -1,36 +1,37 @@
 package com.example.pawel.expense.model;
 
 import java.time.Instant;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Entity
+@NoArgsConstructor
 @Data
 @Table(name="expense")
 public class Expense {
-	
-	@Id
-	public Long id;
-	
-	public Instant expensedate;
-	
-	public String decription;
-	
-	@ManyToOne
-	public Category category;
-	
-	@ManyToOne
-	public User user;
 
-	/* Getters */
+	@Id
+	private Long id;
+
+	private Instant expensedate;
+
+	private String description;
+
+	@ManyToOne
+	private Category category;
+
+	@JsonIgnore
+	@ManyToOne
+	private User user;
+
 	public Long getId() {
 		return id;
 	}
@@ -47,12 +48,12 @@ public class Expense {
 		this.expensedate = expensedate;
 	}
 
-	public String getDecription() {
-		return decription;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDecription(String decription) {
-		this.decription = decription;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Category getCategory() {
@@ -70,6 +71,4 @@ public class Expense {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-	
 }
