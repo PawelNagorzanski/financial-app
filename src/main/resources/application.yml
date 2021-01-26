@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3307/db
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: root
+    password: rabanszroot1
+  h2:
+    console:
+      enabled: true
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  security:
+    oauth2:
+      client:
+        registration:
+          facebook:
+            client-id: 3469025893223583
+            client-secret: 5d24d7d35d6f5c4aa576096202f68a3d
+          github:
+            client-id: 19d75f67a2b1e1bc8653
+            client-secret: c46e72c46c9ca3c8c06507bfa615dbe31153d412
+          google:
+            client-id: 724351390725-ls802pq9c0nrki26n3g3mic9kr5a4b69.apps.googleusercontent.com
+            client-secret: D9xCRTEoVP4GVyks_fKhMiDW
