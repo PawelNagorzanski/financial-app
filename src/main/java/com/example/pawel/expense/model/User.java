@@ -1,22 +1,23 @@
 package com.example.pawel.expense.model;
 
 import java.util.Set;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Entity
+//@Data
+//@Table(name="user")
 @Entity
-@Data
-@Table(name="user")
 public class User {
 
+	//@Id
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 
 	private String  name;

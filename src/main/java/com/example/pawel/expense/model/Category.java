@@ -16,16 +16,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-@NoArgsConstructor
+//@NoArgsConstructor
+//@Entity
+//@Data
+//@Table(name="category")
 @Entity
-@Data
-@Table(name="category")
 public class Category {
-	
+
+	//@Id
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long id;
-		
-	@NotNull
+
 	public String name;
 
 	/* Getters */

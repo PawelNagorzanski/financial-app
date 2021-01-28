@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,7 @@ import com.example.pawel.expense.repository.ExpenseRepository;
 @Controller
 public class ExpenseController {
 
+	@Autowired
 	private ExpenseRepository expenseRepository;
 	
 	public ExpenseController(ExpenseRepository expenseRepository) {
