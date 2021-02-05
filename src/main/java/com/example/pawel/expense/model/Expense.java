@@ -1,25 +1,18 @@
 package com.example.pawel.expense.model;
 
-import java.time.Instant;
-import javax.persistence.*;
-
-import com.example.pawel.expense.model.User;
-import com.example.pawel.expense.model.Category;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//@Entity
-//@NoArgsConstructor
-//@Data
-//@Table(name="expense")
+import java.time.Instant;
+import javax.persistence.*;
+
+
+@NoArgsConstructor
+@Data
+@Table(name="expense")
 @Entity
 public class Expense {
 
-//	@Id
 	@Id
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
@@ -28,8 +21,9 @@ public class Expense {
 
 	private String description;
 
-//	@ManyToOne
-//	private Category category;
+	@ManyToOne
+	private Category category;
+
 
 //	@JsonIgnore
 //	@ManyToOne
@@ -59,13 +53,13 @@ public class Expense {
 		this.description = description;
 	}
 
-//	public Category getCategory() {
-//		return category;
-//	}
-//
-//	public void setCategory(Category category) {
-//		this.category = category;
-//	}
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
 
 //	public User getUser() {
 //		return user;

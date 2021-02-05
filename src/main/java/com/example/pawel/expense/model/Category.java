@@ -16,10 +16,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
-//@NoArgsConstructor
-//@Entity
-//@Data
-//@Table(name="category")
+@NoArgsConstructor
+@Data
+@Table(name="category")
 @Entity
 public class Category {
 
