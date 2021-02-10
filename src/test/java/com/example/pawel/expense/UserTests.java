@@ -5,20 +5,7 @@ import com.example.pawel.expense.repository.RoleRepository;
 import com.example.pawel.expense.repository.UserRepository;
 import com.example.pawel.expense.service.UserService;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.stubbing.OngoingStubbing;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.annotation.Rollback;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
-import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -27,6 +14,7 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.MockitoAnnotations.initMocks;
+
 
 public class UserTests {
 
@@ -41,7 +29,7 @@ public class UserTests {
 
     private UserService testUserService;
     private User user = User.builder()
-            .id(1)
+            .id("1")
             .name("Pawel")
             .lastName("Nagorzanski")
             .email("pnagorz@gmail.com")
@@ -63,19 +51,19 @@ public class UserTests {
     @Test
     public void testFindUserByEmail() {
         // Setup
-        final String email = "test@test.com";
+        String email = "test@test.com";
 
         // Run the test
-        final User result = testUserService.findUserByEmail(email);
+        User result = testUserService.findUserByEmail(email);
 
         // Verify the results
-        assertEquals(email, result.getEmail());
+         assertEquals(email, result.getEmail());
     }
 
     @Test
     public void testSaveUser() {
         // Setup
-        final String email = "test@test.com";
+        String email = "test@test.com";
 
         // Run the test
         User result = testUserService.saveUser(User.builder().build());

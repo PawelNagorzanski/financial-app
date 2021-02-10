@@ -6,15 +6,16 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Entity
-//@Data
-//@Table(name="user")
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "users")
 @Entity
 public class User {
 
