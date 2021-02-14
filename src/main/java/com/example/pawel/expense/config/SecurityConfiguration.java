@@ -18,7 +18,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	public BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
@@ -48,6 +48,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .loginPage("/login").permitAll()
         .and()
         .logout().logoutSuccessUrl("/");
+	}
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 	
 }
