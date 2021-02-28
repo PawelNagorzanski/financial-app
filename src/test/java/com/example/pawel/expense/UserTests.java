@@ -97,7 +97,7 @@ public class UserTests {
 
     @Test
     public void testCreateUser() {
-        User user = new User(); // problem
+        User user = new User();
         user.setName("Pawel");
         user.setPassword("strong");
         user.setEmail("pnagorz@onet.pl");
