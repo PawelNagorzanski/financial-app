@@ -4,6 +4,7 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     username: springuser
     password: springuser123
+    initialization-mode: always
   jpa:
     hibernate:
       ddl-auto: update
