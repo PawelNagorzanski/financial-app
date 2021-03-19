@@ -1,5 +1,6 @@
 package com.example.pawel.expense.controller;
 
+import com.example.pawel.expense.model.User;
 import com.example.pawel.expense.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,15 @@ public class LoginController {
 	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	public ModelAndView registration(){
+		ModelAndView modelAndView = new ModelAndView();
+		User user = new User();
+		modelAndView.addObject("user", user);
+		modelAndView.setViewName("register");
 		return modelAndView;
 	}
 
