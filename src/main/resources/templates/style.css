@@ -167,6 +167,11 @@ body {
 	text-align: center;
 }
 
+#remember-me {
+	margin: 5px;
+	width: 10%;
+}
+
 input {
 	width: 100%;
 	margin-bottom: 10px;
@@ -211,9 +216,7 @@ input:focus {
 	}
 }
 
-a {
-	color: white;
-}
+
 
 a:hover {
 	opacity: 0.8;
