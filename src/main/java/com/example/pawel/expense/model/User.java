@@ -19,7 +19,6 @@ import org.hibernate.validator.constraints.Length;
 @Entity
 public class User {
 
-    //@Id
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
