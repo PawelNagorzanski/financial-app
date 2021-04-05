@@ -21,7 +21,7 @@
           th:object="${user}" method="post" class="form-horizontal"
           role="form">
         <h1>Registration form</h1>
-        <form method="post">
+         <form method="post">
             <input type="text" th:field="*{name}" placeholder="Name" class="form-control" />
             <input type="text" th:field="*{lastName}" placeholder="Last Name" class="form-control"/>
             <input type="text" th:field="*{email}" placeholder="Email" class="form-control"/>
@@ -29,42 +29,14 @@
             <input type="password" th:field="*{password}" placeholder="Password" class="form-control"/>
             <button type="submit" class="btn btn-primary btn-block btn-large">Register</button>
         </form>
+        
         <form th:action="@{/login}" method="get">
             <button class="btn btn-md btn-warning btn-block" type="Submit">Go to login page</button>
         </form>
-        <div class="row">
-            <div class="col-md-12">
-                <a
-                        class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
-                        href="/oauth2/authorization/google"><img
-                        src="https://img.icons8.com/fluent/48/000000/google-logo.png">
-                    Signup Using Google</a>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <a
-                        class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
-                        href="/oauth2/authorization/github"><img
-                        src="https://img.icons8.com/fluent/48/000000/github.png">
-                    Signup Using GitHub</a>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <a
-                        class="btn btn-lg btn-google btn-block text-uppercase btn-outline"
-                        href="/oauth2/authorization/facebook"><img
-                        src="https://img.icons8.com/fluent/48/000000/facebook-new.png">
-                    Signup Using Facebook</a>
-            </div>
-        </div>
-        <br>
+</form>
 </div>
 
-    </form>
+ 	
 
 <script
         src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>

@@ -22,28 +22,28 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private String id;
+    private Long id;
 
     @Column(name = "user_name")
-    @Length(min = 6, message = "Your username must have at least 6 characters")
-    @NotEmpty(message = "Cannot be null")
+//    @Length(min = 6, message = "Your username must have at least 6 characters")
+ //   @NotEmpty(message = "Cannot be null")
     private String userName;
 
     @Column(name = "email")
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
+//    @Email(message = "*Please provide a valid Email")
+//    @NotEmpty(message = "*Please provide an email")
     private String email;
 
     @Column(name = "password")
-    @Length(min = 5, message = "Your password must have at least 6 characters")
+//    @Length(min = 5, message = "Your password must have at least 6 characters")
     private String password;
 
     @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
+//    @NotEmpty(message = "*Please provide your name")
     private String name;
 
     @Column(name = "last_name")
-    @NotEmpty(message = "*Please provide your last name")
+//    @NotEmpty(message = "*Please provide your last name")
     private String lastName;
 
     @Column(name = "active")
@@ -53,11 +53,11 @@ public class User {
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles;
 
-    public String getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -116,5 +116,4 @@ public class User {
     public void setActive(Boolean active) {
         this.active = active;
     }
-
 }

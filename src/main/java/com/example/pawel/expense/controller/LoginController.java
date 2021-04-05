@@ -2,6 +2,9 @@ package com.example.pawel.expense.controller;
 
 import com.example.pawel.expense.model.User;
 import com.example.pawel.expense.service.UserService;
+
+import jdk.internal.org.jline.utils.Log;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -33,6 +36,7 @@ public class LoginController {
 		User user = new User();
 		modelAndView.addObject("user", user);
 		modelAndView.setViewName("register");
+		System.out.println("registration - get");
 		return modelAndView;
 	}
 
@@ -40,6 +44,8 @@ public class LoginController {
 	public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		User userExists = userService.findUserByUserName(user.getUserName());
+		System.out.println("registration - post 1");
+
 		if (userExists != null) {
 			bindingResult
 					.rejectValue("userName", "error.user",
@@ -47,10 +53,12 @@ public class LoginController {
 		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName("register");
+			bindingResult.getErrorCount();
 		} else {
+			modelAndView.addObject("user", new User());
+			System.out.println("registration - post 2 user.getName(): " + user.getName());
 			userService.saveUser(user);
 			modelAndView.addObject("successMessage", "User has been registered successfully");
-			modelAndView.addObject("user", new User());
 			modelAndView.setViewName("register");
 
 		}
@@ -67,11 +75,5 @@ public class LoginController {
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
-
-
-//	@GetMapping("/login")						Old login page
-//	public String getLoginPage(Model model) {
-//		return "login";
-//	}
 
 }

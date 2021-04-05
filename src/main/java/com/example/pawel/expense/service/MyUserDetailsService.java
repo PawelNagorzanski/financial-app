@@ -22,7 +22,6 @@ public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     private UserService userService;
 
-
     @Transactional
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userService.findUserByUserName(userName);
