@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 @Controller
@@ -22,16 +25,15 @@ public class LoginController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
-	public ModelAndView login(){
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+	public ModelAndView login() {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
 
-
-	@RequestMapping(value="/registration", method = RequestMethod.GET)
-	public ModelAndView registration(){
+	@RequestMapping(value = "/registration", method = RequestMethod.GET)
+	public ModelAndView registration() {
 		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
 		modelAndView.addObject("user", user);
@@ -47,13 +49,15 @@ public class LoginController {
 		System.out.println("registration - post 1");
 
 		if (userExists != null) {
-			bindingResult
-					.rejectValue("userName", "error.user",
-							"There is already a user registered with the user name provided");
+			bindingResult.rejectValue("userName", "error.user",
+					"There is already a user registered with the user name provided");
 		}
 		if (bindingResult.hasErrors()) {
-			modelAndView.setViewName("register");
-			bindingResult.getErrorCount();
+			List listErr = new ArrayList();
+			listErr = bindingResult.getAllErrors();
+			for (Object element : listErr) {
+				System.out.println("My_Err: " + element);
+			}
 		} else {
 			modelAndView.addObject("user", new User());
 			System.out.println("registration - post 2 user.getName(): " + user.getName());
@@ -65,13 +69,14 @@ public class LoginController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value="/admin/home", method = RequestMethod.GET)
-	public ModelAndView home(){
+	@RequestMapping(value = "/admin/home", method = RequestMethod.GET)
+	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView();
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = userService.findUserByUserName(auth.getName());
-		modelAndView.addObject("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
-		modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
+		modelAndView.addObject("userName", "Welcome " + user.getUserName() + "/" + user.getName() + " "
+				+ user.getLastName() + " (" + user.getEmail() + ")");
+		modelAndView.addObject("adminMessage", "Content Available Only for Users with Admin Role");
 		modelAndView.setViewName("admin/home");
 		return modelAndView;
 	}
