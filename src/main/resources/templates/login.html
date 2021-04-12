@@ -4,7 +4,6 @@
 <script
 	src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
 <html lang='en' class=''>
@@ -14,23 +13,25 @@
 <meta charset='UTF-8'>
 <meta name="robots" content="noindex">
 <style class="cp-pen-styles" href="style.css">
-
 </style>
 </head>
 <body>
 	<div class="login">
 		<h1>Expense App</h1>
-		<form method="post">
-			<input type="text" name="u" placeholder="Username"
-				required="required" /> <input type="password" name="p"
-				placeholder="Password" required="required" />
-			<button type="submit" class="btn btn-primary btn-block btn-large">Login</button>
-			<a>Remember me?</a>
-			<input type="checkbox" id="remember-me"
-				name="remember-me" class="form-controll">
+		<form th:action="@{/login}" method="POST">
+			<input type="text" id="user_name" name="user_name" placeholder="User Name" class="form-control"/> <br/>
+        	<input type="password" th:placeholder="Password" id="password" name="password" class="form-control"/>
+			<a>Remember me?</a> <input type="checkbox" id="remember-me" name="remember-me"class="form-controll">
+			<!-- 			<div align="center" th:if="${param.error}" style="background-color: red;">
+				<p style="font-size: 20; color: white;">User Name or Password
+					invalid, please verify</p>
+			</div> -->
+			<button type="submit" class="btn btn-primary btn-block btn-large"
+				th:text="Login" value="Login">Login</button>
 		</form>
 		<form th:action="@{/registration}" method="get">
-			<button class="btn btn-md btn-warning btn-block" type="Submit">Go to registration page</button>
+			<button class="btn btn-md btn-warning btn-block" type="Submit">Go
+				to registration page</button>
 		</form>
 		<div class="row">
 			<div class="col-md-12">
