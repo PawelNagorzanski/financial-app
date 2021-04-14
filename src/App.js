@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import Form from "./components/Form.js";
 import List from "./components/List.js"
 import Alert from "./components/Alert.js"
+import { components } from "react-select";
 
 function App() {
   const initialExpenses = [
@@ -22,6 +23,13 @@ function App() {
   const handleAmount = e => {
     setAmount(e.target.value);
   }
+
+  useEffect(() => {
+    fetch('/api/expenses')
+      .then(res => res.json())
+      .then(json => console.log(json))
+      
+  }, []) 
 
   const handleCategory = e => {
     setSelectedCategory(e.target.value);
