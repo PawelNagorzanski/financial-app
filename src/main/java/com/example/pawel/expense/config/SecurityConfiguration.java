@@ -38,11 +38,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.
-                authorizeRequests()
+        		cors()
+        		.and()
+        		.csrf()
+        		.disable()
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/login").permitAll()
                 .antMatchers("/registration").permitAll()
-                .and().csrf().disable().formLogin()	// .anyRequest().authenticated().and().csrf().disable().formLogin()
+                .anyRequest().authenticated().and().csrf().disable().formLogin()	// .anyRequest().authenticated().and().csrf().disable().formLogin()
                 .loginPage("/login").failureUrl("/login?error=true")
                 .defaultSuccessUrl("/api/expenses")
                 .usernameParameter("user_name")

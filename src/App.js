@@ -27,6 +27,7 @@ function App() {
   useEffect(() => {
     fetch('/api/expenses')
       .then(res => res.json())
+      .then(json => setExpeneses(json))
       .then(json => console.log(json))
       
   }, []) 
