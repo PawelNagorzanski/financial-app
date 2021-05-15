@@ -27,6 +27,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
 
+	@Bean
+	public JwtAuthenticationFilter jwtAuthenticationFilter() {
+		return new JwtAuthenticationFilter;
+	}
+	
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
                 auth
@@ -68,5 +73,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+	
+	http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	
 }
