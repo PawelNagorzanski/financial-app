@@ -26,10 +26,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private MyUserDetailsService myUserDetailsService;
+	
+	private JwtAuthenticationEntryPoint unauthorizedHandler;
 
 	@Bean
 	public JwtAuthenticationFilter jwtAuthenticationFilter() {
-		return new JwtAuthenticationFilter;
+		return new JwtAuthenticationFilter();
 	}
 	
     @Override

@@ -81,12 +81,12 @@ public class UserTests {
         user.setEmail("pnagorz@gmail.com");
         user.setPassword("123");
         user.setName("Pawel");
-        user.setLastName("Nago");
+        //user.setLastName("Nago");
 
 
       User savedUser = mockUserRepository.save(user);
 
-      User existUser = userServiceUnderTest.findUserByUserName(savedUser.getUserName());
+      User existUser = userServiceUnderTest.findUserByUserName(savedUser.getUsername());
 
       assertThat(user.getEmail()).isEqualTo(existUser.getEmail());
 //        User existUser = userServiceUnderTest.find(User.class, savedUser.getId());

@@ -18,14 +18,35 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
     private int id;
-    @Column(name = "role")
+    
+    @Enumerated(EnumType.STRING)
+//    @NaturalId
+    @Column(length = 60)
+    private RoleName name;
+
     private String role;
+    
+    public Role() {
 
-    public int getId() { return id; }
+    }
 
-    public void setId(int id) { this.id = id; }
+    public Role(RoleName name) {
+        this.name = name;
+    }
 
     public String getRole() { return role; }
 
     public void setRole(String role) { this.role = role; }
+    
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
+
+    public RoleName getName() {
+        return name;
+    }
+
+    public void setName(RoleName name) {
+        this.name = name;
+    }
 }
