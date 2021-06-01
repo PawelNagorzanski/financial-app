@@ -16,6 +16,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.example.pawel.expense.model.UserPrincipal;
 import com.example.pawel.expense.service.MyUserDetailsService;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
@@ -33,7 +34,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
 			if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
 				Long userId = tokenProvider.getUserIdFromJWT(jwt);
-				UserDetails userDetails = myUserDetailsService.loadUserById(userId);
+				UserPrincipal userDetails = myUserDetailsService.loadUserById(userId); // Trying change the format
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
