@@ -16,7 +16,6 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.example.pawel.expense.model.UserPrincipal;
 import com.example.pawel.expense.service.MyUserDetailsService;
 
 public class JwtAuthenticationFilter extends OncePerRequestFilter {

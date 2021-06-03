@@ -1,8 +1,8 @@
 package com.example.pawel.expense.service;
 
+import com.example.pawel.expense.config.UserPrincipal;
 import com.example.pawel.expense.model.Role;
 import com.example.pawel.expense.model.User;
-import com.example.pawel.expense.model.UserPrincipal;
 import com.example.pawel.expense.repository.UserRepository;
 import com.example.pawel.expense.response.ResourceNotFoundException;
 

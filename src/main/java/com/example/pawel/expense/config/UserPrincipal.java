@@ -1,4 +1,4 @@
-package com.example.pawel.expense.model;
+package com.example.pawel.expense.config;
 
 import com.example.pawel.expense.model.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;

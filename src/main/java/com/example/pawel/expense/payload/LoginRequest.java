@@ -1,4 +1,4 @@
-package com.example.pawel.expense.model;
+package com.example.pawel.expense.payload;
 
 import javax.validation.constraints.NotBlank;
 

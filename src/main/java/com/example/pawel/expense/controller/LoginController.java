@@ -1,12 +1,12 @@
 package com.example.pawel.expense.controller;
 
 import com.example.pawel.expense.config.JwtTokenProvider;
-import com.example.pawel.expense.model.ApiResponse;
-import com.example.pawel.expense.model.LoginRequest;
 import com.example.pawel.expense.model.Role;
 import com.example.pawel.expense.model.RoleName;
-import com.example.pawel.expense.model.SignUpRequest;
 import com.example.pawel.expense.model.User;
+import com.example.pawel.expense.payload.ApiResponse;
+import com.example.pawel.expense.payload.LoginRequest;
+import com.example.pawel.expense.payload.SignUpRequest;
 import com.example.pawel.expense.repository.RoleRepository;
 import com.example.pawel.expense.repository.UserRepository;
 import com.example.pawel.expense.response.AppException;
