@@ -17,7 +17,7 @@ const request = (options) => {
             return Promise.reject(json);
         }
         return json
-    }))
+    }));
 }
 
 export function signup(signupRequest) {

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { signup } from '../api/APIUtils';
+import Alert from '../Alert'
 
 class Signup extends Component {
     constructor(props) {
@@ -20,7 +22,7 @@ class Signup extends Component {
         this.handleInputChange = this.handleInputChange.bind(this);
     }
 
-    handleInputChange(e, validationFun) {
+    handleInputChange(e, validationFunction) {
         const target = e.target;
         const inputName = target.name;
         const inputValue = target.value;
@@ -28,7 +30,7 @@ class Signup extends Component {
         this.setState({
             [inputName] : {
                 value: inputValue,
-                ...validationFun(inputValue)
+                ...validationFunction(inputValue)
             }
         })
     }
@@ -42,8 +44,12 @@ class Signup extends Component {
             email: this.state.email.value,
             password: this.state.password.value,
         };
-        signup(signupRequest).then(response => {
+        signup(signupRequest)
+        .then(res => {
+            this.props.history.push("/login");
 
+        }).catch(error => {
+            <Alert text={"Signup error! Please try again"} />
         })
     }
 
