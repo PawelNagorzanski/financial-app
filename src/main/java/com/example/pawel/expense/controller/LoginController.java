@@ -26,6 +26,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,6 +57,7 @@ public class LoginController {
 	JwtTokenProvider jwtTokenProvider;
 	AuthenticationManager authenticationManager;
 
+	@CrossOrigin
 	@PostMapping("/singin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(
@@ -65,6 +67,7 @@ public class LoginController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
 
+	@CrossOrigin
 	@PostMapping("/singup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { signup } from '../api/APIUtils';
-import Alert from '../Alert'
+import { signup } from '../api/APIUtils.js';
+import Alert from "../main/Alert.js";
+import { NAME_MIN_LENGTH, } from "../api/constants/constants.js";
+import { Link } from 'react-router-dom';
 
 class Signup extends Component {
     constructor(props) {
@@ -20,10 +22,11 @@ class Signup extends Component {
             },
         }
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleInputChange(e, validationFunction) {
-        const target = e.target;
+    handleInputChange(event, validationFunction) {
+        const target = event.target;
         const inputName = target.name;
         const inputValue = target.value;
 
@@ -35,8 +38,8 @@ class Signup extends Component {
         })
     }
 
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(event) {
+        event.preventDefault();
 
         const signupRequest = {
             name: this.state.name.value,
@@ -45,9 +48,9 @@ class Signup extends Component {
             password: this.state.password.value,
         };
         signup(signupRequest)
-        .then(res => {
+        .then(response => {
             this.props.history.push("/login");
-
+            console.log("Hej Paweł!")
         }).catch(error => {
             <Alert text={"Signup error! Please try again"} />
         })
@@ -59,8 +62,22 @@ class Signup extends Component {
     render() {
         return (
             <div>
-                
+                <form onSubmit={this.handleSubmit}>
+                    <input placeholder="Your name" value={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
+                    <input placeholder="Your username" value={this.state.username.value} onChange={(event) => this.handleInputChange(event)} />
+                    <input placeholder="Your email" value={this.state.email.value} onChange={(event) => this.handleInputChange(event)} />
+                    <input placeholder="Your password" value={this.state.password.value} onChange={(event) => this.handleInputChange(event)} />
+                    <button type="submit" class="submit" htmlType="submit" >Submit</button>
+                </form>
             </div>
         )
     }
 }
+
+const validateName = (name) => {
+    if(name.lenght < NAME_MIN_LENGTH) {
+
+    }
+}
+
+export default Signup;
