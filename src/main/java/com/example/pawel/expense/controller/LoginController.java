@@ -43,9 +43,10 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-//@Controller
-@RestController
-@RequestMapping("/api/auth")
+@Controller
+
+@RequestMapping("/api/auth/")
+// @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class LoginController {
 
 	@Autowired
@@ -57,8 +58,8 @@ public class LoginController {
 	JwtTokenProvider jwtTokenProvider;
 	AuthenticationManager authenticationManager;
 
-	@CrossOrigin
 	@PostMapping("/singin")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*") @CrossOrigin(origins = "http://localhost:8080")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsernameOrEmail(), loginRequest.getPassword()));
@@ -67,8 +68,9 @@ public class LoginController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
 
-	@CrossOrigin
 	@PostMapping("/singup")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*") @CrossOrigin(origins = "http://localhost:8080")
+	// @CrossOrigin(origins = "*", allowedHeaders = "*")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignUpRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getUsername())) {
 			return new ResponseEntity(new ApiResponse(false, "This username is taken!"), HttpStatus.BAD_REQUEST);
@@ -88,6 +90,7 @@ public class LoginController {
 		User result = userRepository.save(user);
 		URI location = ServletUriComponentsBuilder.fromCurrentContextPath().path("/users/{username}")
 				.buildAndExpand(result.getUsername()).toUri();
+		System.out.println("Hej Paweł!");
 		return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
 	}
 

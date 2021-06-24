@@ -49,8 +49,8 @@ class Signup extends Component {
         };
         signup(signupRequest)
         .then(response => {
-            this.props.history.push("/login");
             console.log("Hej Paweł!")
+            this.props.history.push("/login");
         }).catch(error => {
             <Alert text={"Signup error! Please try again"} />
         })
@@ -63,10 +63,10 @@ class Signup extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Your name" value={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
-                    <input placeholder="Your username" value={this.state.username.value} onChange={(event) => this.handleInputChange(event)} />
-                    <input placeholder="Your email" value={this.state.email.value} onChange={(event) => this.handleInputChange(event)} />
-                    <input placeholder="Your password" value={this.state.password.value} onChange={(event) => this.handleInputChange(event)} />
+                    <input placeholder="Your name" defaultValue={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
+                    <input placeholder="Your username" defaultValue={this.state.username.value} onChange={(event) => this.handleInputChange(event)} />
+                    <input placeholder="Your email" defaultValue={this.state.email.value} onChange={(event) => this.handleInputChange(event)} />
+                    <input placeholder="Your password" valdefaultValueue={this.state.password.value} onChange={(event) => this.handleInputChange(event)} />
                     <button type="submit" class="submit" htmlType="submit" >Submit</button>
                 </form>
             </div>
