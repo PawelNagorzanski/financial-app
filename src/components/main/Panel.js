@@ -37,6 +37,7 @@ function App() {
   }
 
   async function httpPost(data) {
+    console.log(data);
     await fetch('/api/expense', { // http://localhost:8080/api/expenses
       method: 'POST',
       body: JSON.stringify(data),
@@ -44,7 +45,8 @@ function App() {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       }
-    })
+    });
+    
   }
 
   const handleSubmit = e => {

@@ -15,16 +15,17 @@ import javax.persistence.*;
 @Table(name = "roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
     private int id;
     
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
 //    @NaturalId
-    @Column(length = 60)
+//    @Column(length = 60)
+    @Column(name = "name")
     private RoleName name;
 
-    private String role;
+//    private String role;
     
     public Role() {
 
@@ -34,9 +35,9 @@ public class Role {
         this.name = name;
     }
 
-    public String getRole() { return role; }
-
-    public void setRole(String role) { this.role = role; }
+//    public String getRole() { return role; }
+//
+//    public void setRole(String role) { this.role = role; }
     
     public int getId() { return id; }
 

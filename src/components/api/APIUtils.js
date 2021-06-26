@@ -3,7 +3,7 @@ import { ACCESS_TOKEN, API_BASE_URL } from "./constants/constants";
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
+        // 'Access-Control-Allow-Origin': '*'
     })
 
     if (localStorage.getItem(ACCESS_TOKEN)) {
@@ -30,7 +30,6 @@ export function signup(signupRequest) {
         method: 'POST',
         body: JSON.stringify(signupRequest)
     });
-    
 }
 
 export function login(loginRequest) {

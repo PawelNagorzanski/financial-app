@@ -24,17 +24,17 @@ import java.util.Set;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserService userService;
+//    private UserService userService;
     
     private UserRepository userRepository;
 
-    @Transactional
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        User user = userService.findUserByUserName(userName);
-        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
-        return buildUserForAuthentication(user, authorities);
-    }
-    
+//    @Transactional
+//    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+//        User user = userService.findUserByUserName(userName);
+//        List<GrantedAuthority> authorities = getUserAuthority(user.getRoles());
+//        return buildUserForAuthentication(user, authorities);
+//    }
+//    
     @Transactional
     public UserPrincipal loadUserById(Long id) {
         User user = userRepository.findById(id).orElseThrow(
@@ -44,16 +44,22 @@ public class MyUserDetailsService implements UserDetailsService {
         return UserPrincipal.create(user);
     }
 
-    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
-        Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
-        for (Role role : userRoles) {
-            roles.add(new SimpleGrantedAuthority(role.getRole()));
-        }
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
-        return grantedAuthorities;
-    }
+//    private List<GrantedAuthority> getUserAuthority(Set<Role> userRoles) {
+//        Set<GrantedAuthority> roles = new HashSet<GrantedAuthority>();
+//        for (Role role : userRoles) {
+//            roles.add(new SimpleGrantedAuthority(role.getName()));
+//        }
+//        List<GrantedAuthority> grantedAuthorities = new ArrayList<>(roles);
+//        return grantedAuthorities;
+//    }
 
     private UserDetails buildUserForAuthentication(User user, List<GrantedAuthority> authorities) {
         return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), true, true ,true, false, authorities);
     }
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

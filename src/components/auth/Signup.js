@@ -23,12 +23,15 @@ class Signup extends Component {
         }
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        
     }
 
     handleInputChange(event, validationFunction) {
         const target = event.target;
         const inputName = target.name;
         const inputValue = target.value;
+
+        console.log(inputName, inputValue);
 
         this.setState({
             [inputName] : {
@@ -47,27 +50,25 @@ class Signup extends Component {
             email: this.state.email.value,
             password: this.state.password.value,
         };
+
         signup(signupRequest)
         .then(response => {
-            console.log("Hej Paweł!")
+            console.log(response)
             this.props.history.push("/login");
         }).catch(error => {
             <Alert text={"Signup error! Please try again"} />
         })
     }
 
-
-
-
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Your name" defaultValue={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
-                    <input placeholder="Your username" defaultValue={this.state.username.value} onChange={(event) => this.handleInputChange(event)} />
-                    <input placeholder="Your email" defaultValue={this.state.email.value} onChange={(event) => this.handleInputChange(event)} />
-                    <input placeholder="Your password" valdefaultValueue={this.state.password.value} onChange={(event) => this.handleInputChange(event)} />
-                    <button type="submit" class="submit" htmlType="submit" >Submit</button>
+                    <input placeholder="Your name" name="name" defaultValue={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
+                    <input placeholder="Your username" name="username" defaultValue={this.state.username.value} onChange={(event) => this.handleInputChange(event, validateUsername)} />
+                    <input placeholder="Your email" name="email" defaultValue={this.state.email.value} onChange={(event) => this.handleInputChange(event, validateEmail)} />
+                    <input placeholder="Your password" name="password" valdefaultValueue={this.state.password.value} onChange={(event) => this.handleInputChange(event, validatePassword)} />
+                    <button type="submit" name="submit" class="submit" htmlType="submit" >Submit</button>
                 </form>
             </div>
         )
@@ -76,8 +77,21 @@ class Signup extends Component {
 
 const validateName = (name) => {
     if(name.lenght < NAME_MIN_LENGTH) {
-
+        <Alert text={"Your name is too short! Please enter value with 4 characters"} />
+        console.log("heyy")
     }
+}
+
+const validateUsername = (name) => {
+    
+}
+
+const validateEmail = (name) => {
+    
+}
+
+const validatePassword = (name) => {
+    
 }
 
 export default Signup;
