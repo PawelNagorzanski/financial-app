@@ -14,27 +14,30 @@ import io.jsonwebtoken.*;
 
 @Component
 public class JwtTokenProvider {
+
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
-	
-    // @Value("${app.jwtSecret}")
+
+    @Value("${app.jwtSecret}")
     private String jwtSecret;
 
-    // @Value("${app.jwtExpirationInMs}")
+    @Value("${app.jwtExpirationInMs}")
     private int jwtExpirationInMs;
-	public String generateToken(Authentication authentication ) {
-		User user = (User) authentication.getPrincipal();
-		
-		Date now = new Date();
-		Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
-		
-		return Jwts.builder()
-				.setSubject(Long.toString(user.getId()))
-				.setIssuedAt(new Date())
-				.setExpiration(expiryDate)
+
+    public String generateToken(Authentication authentication) {
+
+        UserPrincipal userPrincipal = (UserPrincipal) authentication.getPrincipal();
+
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + jwtExpirationInMs);
+
+        return Jwts.builder()
+                .setSubject(Long.toString(userPrincipal.getId()))
+                .setIssuedAt(new Date())
+                .setExpiration(expiryDate)
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
-	}
-	
+    }
+
     public Long getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(jwtSecret)

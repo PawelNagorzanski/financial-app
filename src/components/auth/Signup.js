@@ -63,6 +63,7 @@ class Signup extends Component {
     render() {
         return (
             <div>
+                <h3>Register your account</h3>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Your name" name="name" defaultValue={this.state.name.value} onChange={(event) => this.handleInputChange(event, validateName)} />
                     <input placeholder="Your username" name="username" defaultValue={this.state.username.value} onChange={(event) => this.handleInputChange(event, validateUsername)} />

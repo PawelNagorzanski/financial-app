@@ -7,26 +7,16 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "roles")
 public class Role {
     @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "role_id")
-    private int id;
+    private Long id;
     
-//    @Enumerated(EnumType.STRING)
-//    @NaturalId
-//    @Column(length = 60)
-    @Column(name = "name")
+//    @Column(name = "name")
     private RoleName name;
 
-//    private String role;
-    
     public Role() {
 
     }
@@ -35,13 +25,9 @@ public class Role {
         this.name = name;
     }
 
-//    public String getRole() { return role; }
-//
-//    public void setRole(String role) { this.role = role; }
-    
-    public int getId() { return id; }
+    public Long getId() { return id; }
 
-    public void setId(int id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
 
     public RoleName getName() {
         return name;

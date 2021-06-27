@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class UserPrincipal {
+
+public class UserPrincipal implements UserDetails {
 	private Long id;
 
     private String name;
@@ -74,18 +75,22 @@ public class UserPrincipal {
         return authorities;
     }
 
+    
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    
     public boolean isEnabled() {
         return true;
     }
