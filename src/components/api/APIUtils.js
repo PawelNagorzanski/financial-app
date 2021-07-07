@@ -3,23 +3,27 @@ import { ACCESS_TOKEN, API_BASE_URL } from "./constants/constants";
 const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
-        // 'Access-Control-Allow-Origin': '*'
     })
-
-    if (localStorage.getItem(ACCESS_TOKEN)) {
+    
+    if(localStorage.getItem(ACCESS_TOKEN)) {
+        console.log("Jest wyszukane")
+        console.log(localStorage);
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
     }
 
-    const defaults = { headers: headers };
+    const defaults = {headers: headers};
     options = Object.assign({}, defaults, options);
 
-    return fetch(options.url , options).then(res => res.json().then(json => {
-        if (!res.ok) {
-            return Promise.reject(json);
-        }
-        return json;
-    }));
-}
+    return fetch(options.url, options)
+    .then(response => 
+        response.json().then(json => {
+            if(!response.ok) {
+                return Promise.reject(json);
+            }
+            return json;
+        })
+    );
+};
 
 export function signup(signupRequest) {
     console.log(API_BASE_URL);

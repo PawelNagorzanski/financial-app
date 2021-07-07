@@ -24,12 +24,13 @@ import java.util.Set;
 public class MyUserDetailsService implements UserDetailsService {
 
     @Autowired
-    UserRepository userRepository;
+    public UserRepository userRepository; // null
 
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String usernameOrEmail)
-            throws UsernameNotFoundException {
+    
+    		throws UsernameNotFoundException {
         // Let people login with either username or email
         User user = userRepository.findByUsernameOrEmail(usernameOrEmail, usernameOrEmail)
                 .orElseThrow(() ->
@@ -41,6 +42,7 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Transactional
     public UserDetails loadUserById(Long id) {
+        
         User user = userRepository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("User", "id", id)
         );

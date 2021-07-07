@@ -14,6 +14,8 @@ import com.example.pawel.expense.response.JwtAuthenticationResponse;
 
 import jdk.internal.org.jline.utils.Log;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -47,7 +49,8 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/api/auth")
 public class LoginController {
-
+    private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+	
     @Autowired
     AuthenticationManager authenticationManager;
 
@@ -78,7 +81,11 @@ public class LoginController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
         String jwt = tokenProvider.generateToken(authentication);
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt)).ok(new ApiResponse(true, "User loggged successfully"));
+        
+        logger.info(jwt);
+        
+        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+        // return ResponseEntity.ok(new JwtAuthenticationResponse(jwt)).ok(new ApiResponse(true, "User loggged successfully"));
     }
 
     @PostMapping("/signup")

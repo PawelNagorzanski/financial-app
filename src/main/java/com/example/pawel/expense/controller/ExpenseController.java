@@ -25,7 +25,7 @@ import com.example.pawel.expense.model.Expense;
 import com.example.pawel.expense.repository.ExpenseRepository;
 
 @RestController
-@RequestMapping("/api")
+//@RequestMapping("/api")
 @Controller
 public class ExpenseController {
 
@@ -37,6 +37,12 @@ public class ExpenseController {
 		this.expenseRepository = expenseRepository;
 	}
 
+	// Test
+	@GetMapping("/siema")
+	public String Siema() {
+		return "Siema";
+	}
+	
 	@GetMapping("/expenses")
 	Collection<Expense> expenses(){
 		return expenseRepository.findAll();

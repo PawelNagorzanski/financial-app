@@ -45,8 +45,8 @@ class Login extends Component {
         login(loginRequest).then(response => {
             console.log(response);
             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-            this.props.history.push("/panel");
             this.props.onLogin();
+            // this.props.history.push("/panel");
         }).catch(error => {
             if(error.status === 401) {
                         
