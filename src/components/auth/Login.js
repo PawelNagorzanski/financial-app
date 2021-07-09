@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { login } from '../api/APIUtils.js';
+import { login, siema } from '../api/APIUtils.js';
 import { Link } from 'react-router-dom';
 import { ACCESS_TOKEN } from "../api/constants/constants.js";
 import { Form, Input, Button, Icon, notification } from 'antd';
@@ -25,7 +25,7 @@ class Login extends Component {
         const inputName = target.name;
         const inputValue = target.value;
 
-        console.log(inputName, inputValue);
+       // console.log(inputName, inputValue);
 
         this.setState({
             [inputName] : {
@@ -84,6 +84,7 @@ class Login extends Component {
                     <input placeholder="Your password" name="password" valdefaultValueue={this.state.password.value} onChange={(event) => this.handleInputChange(event)} />
                     <button type="submit" name="submit" class="submit" htmlType="submit" >Submit</button>
                 </form>
+                <button onClick={siema}>Siema</button>
             </div>
         );
     }

@@ -1,20 +1,20 @@
 package com.example.pawel.expense.response;
 
 public class JwtAuthenticationResponse {
-	private String accesToken;
+	private String accessToken;
 	private String tokenType = "Bearer";
 	
-	public JwtAuthenticationResponse(String accesToken) {
-		this.accesToken = accesToken;
+	public JwtAuthenticationResponse(String accessToken) {
+		this.accessToken = accessToken;
 		
 	}
 
-	public String getAccesToken() {
-		return accesToken;
+	public String getAccessToken() {
+		return accessToken;
 	}
 
-	public void setAccesToken(String accesToken) {
-		this.accesToken = accesToken;
+	public void setAccessToken(String accessToken) {
+		this.accessToken = accessToken;
 	}
 
 	public String getTokenType() {

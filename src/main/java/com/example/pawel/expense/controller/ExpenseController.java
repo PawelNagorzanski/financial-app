@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.pawel.expense.model.Category;
 import com.example.pawel.expense.model.Expense;
+import com.example.pawel.expense.payload.ApiResponse;
 import com.example.pawel.expense.repository.ExpenseRepository;
 
 @RestController
@@ -39,8 +40,9 @@ public class ExpenseController {
 
 	// Test
 	@GetMapping("/siema")
-	public String Siema() {
-		return "Siema";
+	ResponseEntity<String> Siema() {
+        return new ResponseEntity(new ApiResponse(true, "Hej"),
+                HttpStatus.OK);
 	}
 	
 	@GetMapping("/expenses")
