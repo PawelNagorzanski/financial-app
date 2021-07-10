@@ -26,7 +26,7 @@ import com.example.pawel.expense.payload.ApiResponse;
 import com.example.pawel.expense.repository.ExpenseRepository;
 
 @RestController
-//@RequestMapping("/api")
+@RequestMapping("/api")
 @Controller
 public class ExpenseController {
 

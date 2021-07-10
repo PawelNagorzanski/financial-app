@@ -25,8 +25,6 @@ class Login extends Component {
         const inputName = target.name;
         const inputValue = target.value;
 
-       // console.log(inputName, inputValue);
-
         this.setState({
             [inputName] : {
                 value: inputValue,
@@ -44,33 +42,10 @@ class Login extends Component {
 
         login(loginRequest).then(response => {
             console.log(response);
-            localStorage.setItem(ACCESS_TOKEN, response.accessToken);
+ 
             this.props.onLogin();
             // this.props.history.push("/panel");
-        }).catch(error => {
-            if(error.status === 401) {
-                        
-            } else {
-                                  
-            }
-        });
-        
-        // this.props.form.validateFields((err, values) => {
-        //     if (!err) {
-        //         const loginRequest = Object.assign({}, values);
-        //         login(loginRequest)
-        //         .then(response => {
-        //             localStorage.setItem(ACCESS_TOKEN, response.accessToken);
-        //             this.props.onLogin();
-        //         }).catch(error => {
-        //             if(error.status === 401) {
-                        
-        //             } else {
-                                          
-        //             }
-        //         });
-        //     }
-        // });
+        })
     }
     
     

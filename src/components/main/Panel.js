@@ -3,6 +3,7 @@ import "./App.css";
 import Form from "./Form.js";
 import List from "./List.js"
 import Alert from "./Alert.js"
+import { expensePost, expenseGet } from "../api/APIUtils";
 import { components } from "react-select";
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
   }
 
   useEffect(() => {
-    fetch('/api/expenses')
-      .then(res => res.json())
+
+    expenseGet()
       .then(json => setExpeneses(json))
       .then(json => console.log(json))
       
@@ -36,18 +37,18 @@ function App() {
     setSelectedCategory(e.target.value);
   }
 
-  async function httpPost(data) {
-    console.log(data);
-    await fetch('/api/expense', { // http://localhost:8080/api/expenses
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      }
-    });
+  // async function httpPost(data) {
+  //   console.log(data);
+  //   await fetch('/api/expense', { // http://localhost:8080/api/expenses
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //     }
+  //   });
     
-  }
+  // }
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -55,7 +56,7 @@ function App() {
     if(amount > 0 || description !== "") {
       var singleExpenses = {id: Math.random() * 100000, description, amount, SelectedCategory}
       setExpeneses([...expenses, singleExpenses]);
-      httpPost(singleExpenses);
+      expensePost(singleExpenses);
       setAmount("");
       setDescription("");
       handleAlert({text: "Added"});

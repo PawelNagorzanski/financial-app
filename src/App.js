@@ -6,20 +6,27 @@ import Panel from "./components/main/Panel.js"
 import {
   Route,
   withRouter,
-  Switch
+  Switch,
+  useHistory,
+  Link
 } from 'react-router-dom';
 
-class App extends Component {
- 
-render() {
+const App = () => {
+  const history = useHistory();
+
+  // <button type="button" onClick={() => history.push('/')}>Go to home</button>
+  // <button type="button" onClick={() => history.push('/signup')}>Go to signup</button>
+  // <button type="button" onClick={() => history.push('/login')}>Go to login</button>
+  // <button type="button" onClick={() => history.push('/panel')}>Go to panel</button>  
   return (
-        <Switch>
+    < >
+    <Switch>
           <Route path="/signup" component={Signup}></Route>
           <Route path="/panel" component={Panel}></Route>
           <Route path="/login" component={Login}></Route>
         </Switch>
+    </>
     );
-}
 }
 
 export default withRouter(App);

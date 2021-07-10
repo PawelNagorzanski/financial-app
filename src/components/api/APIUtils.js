@@ -1,15 +1,12 @@
 import { ACCESS_TOKEN, API_BASE_URL } from "./constants/constants";
 
-const request = (options) => {
+export const request = (options) => {
     const headers = new Headers({
         'Content-Type': 'application/json',
     })
     
     if(localStorage.getItem(ACCESS_TOKEN)) {
-        console.log("Jest wyszukane local storage")
         headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-        console.log(localStorage);
-        console.log(headers);
     }
 
     const defaults = {headers: headers};
@@ -27,50 +24,33 @@ const request = (options) => {
 };
 
 export function siema() {
-    // console.log(API_BASE_URL);
-
-    const headers = new Headers({
-        'Content-Type': 'application/json',
+    return request({
+        url: API_BASE_URL + "/siema",
+        method: 'GET'
+    }).then(response => {
+        console.log(response);
     })
+}
+
+export function expenseGet() {
+    return request({
+        url: API_BASE_URL + "/expenses",
+        method: 'GET',
+    });
     
-    if(localStorage.getItem(ACCESS_TOKEN)) {
-        console.log("Jest wyszukane local storage")
-        headers.append('Authorization', 'Bearer ' + localStorage.getItem(ACCESS_TOKEN))
-        console.log(localStorage);
-        console.log(headers);
-    }
+}
 
-    const defaults = {headers: headers};
-    // const options = Object.assign({}, defaults, options);
-
-    fetch("http://localhost:8080/siema", defaults)
-        .then(response => response.json())
-        .then(data => console.log(data));
-
-    // .then(response => {
-        //     const data = response.json();
-        //     console.log(data)
-            
-        //     return data;
-        // })
-        // .then(data => console.log("data", data))
-        //     .catch(error => {
-        //     console.log("error", error);
-        // });
-
-    // return request({
-        
-    //     url: API_BASE_URL + "/siema",
-    //     method: 'GET',
-    //     body: JSON.stringify(siemaRequest)
-    // });
+export function expensePost(data) {
+    return request({
+        url: API_BASE_URL + "/expense",
+        method: 'POST',
+        body: JSON.stringify(data)
+    });
+    
 }
 
 export function signup(signupRequest) {
-    console.log(API_BASE_URL);
-    console.log(signupRequest);
     return request({
-        
         url: API_BASE_URL + "/auth/signup",
         method: 'POST',
         body: JSON.stringify(signupRequest)
@@ -83,9 +63,6 @@ export function login(loginRequest) {
         method: 'POST',
         body: JSON.stringify(loginRequest)
     }).then(response => {
-            console.log(response);
             localStorage.setItem("accessToken", response.accessToken);
-            console.log(localStorage);
-            console.log("Hej0");  
     });
 }

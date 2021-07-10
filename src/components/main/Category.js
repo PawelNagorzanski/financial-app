@@ -6,14 +6,14 @@ import { components } from 'react-select';
 class Category extends Component {
   state = {
     isLoading: true,
-    categories: [],
+    categories: ["Taxes", "Bills"],
   };
 
-  async componentDidMount() {
-    const response = await fetch('/api/categories/');
-    const body = await response.json();
-    this.setState({ categories: body, isLoading: false });
-  }
+  // async componentDidMount() {
+  //   const response = await fetch('/api/categories/');
+  //   const body = await response.json();
+  //   this.setState({ categories: body, isLoading: false });
+  // }
 
 render() {
   const {categories, isLoading} = this.state;
