@@ -52,7 +52,7 @@ export function expensePost(data) {
 
 export function expenseDelete(id) {
   return request({
-    url: API_BASE_URL + '/expenses/' + id,
+    url: API_BASE_URL + '/expenses' + id,
     method: 'DELETE',
     // body: JSON.stringify(data, userId),
   })

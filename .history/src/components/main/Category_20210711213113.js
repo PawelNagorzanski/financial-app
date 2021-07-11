@@ -5,7 +5,8 @@ import { components } from 'react-select'
 
 class Category extends Component {
   state = {
-    categories: ['Other', 'Taxes', 'Bills'],
+    isLoading: true,
+    categories: ['Taxes', 'Bills'],
   }
 
   render() {

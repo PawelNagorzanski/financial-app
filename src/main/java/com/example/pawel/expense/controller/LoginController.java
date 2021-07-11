@@ -1,12 +1,14 @@
 package com.example.pawel.expense.controller;
 
 import com.example.pawel.expense.config.JwtTokenProvider;
+import com.example.pawel.expense.model.Expense;
 import com.example.pawel.expense.model.Role;
 import com.example.pawel.expense.model.RoleName;
 import com.example.pawel.expense.model.User;
 import com.example.pawel.expense.payload.ApiResponse;
 import com.example.pawel.expense.payload.LoginRequest;
 import com.example.pawel.expense.payload.SignUpRequest;
+import com.example.pawel.expense.repository.ExpenseRepository;
 import com.example.pawel.expense.repository.RoleRepository;
 import com.example.pawel.expense.repository.UserRepository;
 import com.example.pawel.expense.response.AppException;
@@ -28,6 +30,8 @@ import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,6 +47,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -51,9 +56,15 @@ import javax.validation.Valid;
 public class LoginController {
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
 	
+//    @Autowired
+//    UserService userService;
+    
     @Autowired
     AuthenticationManager authenticationManager;
 
+    @Autowired
+    ExpenseRepository expenseRepository;
+    
     @Autowired
     UserRepository userRepository;
 
@@ -84,7 +95,10 @@ public class LoginController {
         
         logger.info(jwt);
         
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+        User user = userRepository.findByEmail(loginRequest.getEmail()); // cahnging return type to User for optional
+        Long userId = user.getId();
+        
+        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt, userId));
         // return ResponseEntity.ok(new JwtAuthenticationResponse(jwt)).ok(new ApiResponse(true, "User loggged successfully"));
     }
 
@@ -119,4 +133,12 @@ public class LoginController {
 
         return ResponseEntity.created(location).body(new ApiResponse(true, "User registered successfully"));
     }
+    
+    @GetMapping("/{userId}/expense")
+    public ResponseEntity<Expense> getUserExpenses(@PathVariable(value = "userId") Long userId) {
+    	List<Expense> expenses = expenseRepository.findExpeseById(userId);
+    	    	return new ResponseEntity(expenses, HttpStatus.OK);
+    	
+    }
+    
 }

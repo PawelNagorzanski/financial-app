@@ -5,16 +5,17 @@ import { components } from 'react-select'
 
 class Category extends Component {
   state = {
-    categories: ['Other', 'Taxes', 'Bills'],
+    isLoading: true,
+    categories: ['Taxes', 'Bills'],
   }
 
   render() {
-    const { categories } = this.state
+    const { categories, isLoading } = this.state
 
     return (
       <>
         {categories.map((category) => {
-          return <option>{category}</option>
+          return <option>{category.value}</option>
         })}
       </>
     )

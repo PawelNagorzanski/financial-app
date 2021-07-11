@@ -40,8 +40,10 @@ class Login extends Component {
 
     login(loginRequest).then((response) => {
       console.log(response)
+
+      // this.props.onLogin();
+      // this.props.history.push("/panel");
     })
-    this.props.history.push('/panel')
   }
 
   render() {

@@ -9,7 +9,7 @@ import { components } from 'react-select'
 function App() {
   const initialExpenses = [
     {
-      // id: Math.random() * 100000,
+      id: Math.random() * 100000,
       description: 'Example',
       amount: 0,
       SelectedCategory: [''],
@@ -40,16 +40,29 @@ function App() {
     setSelectedCategory(e.target.value)
   }
 
+  // async function httpPost(data) {
+  //   console.log(data);
+  //   await fetch('/api/expense', { // http://localhost:8080/api/expenses
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json',
+  //     }
+  //   });
+
+  // }
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    const id = localStorage.getItem('userId')
+    const user_id = localStorage.getItem('userId')
     if (amount > 0 || description !== '') {
       var singleExpenses = {
-        //id: Math.random() * 100000,
+        id: Math.random() * 100000,
         description,
         amount,
         SelectedCategory,
-        user: { id },
+        user: { user_id },
       }
       setExpeneses([...expenses, singleExpenses])
       expensePost(singleExpenses)
@@ -92,11 +105,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       </div>
-      <List
-        expenses={expenses}
-        setExpeneses={setExpeneses}
-        SelectedCategory={SelectedCategory}
-      />
+      <List expenses={expenses} setExpeneses={setExpeneses} />
     </>
   )
 }

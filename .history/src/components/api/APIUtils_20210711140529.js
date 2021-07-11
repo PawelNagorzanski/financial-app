@@ -46,15 +46,7 @@ export function expensePost(data) {
   return request({
     url: API_BASE_URL + '/expense',
     method: 'POST',
-    body: JSON.stringify(data, userId),
-  })
-}
-
-export function expenseDelete(id) {
-  return request({
-    url: API_BASE_URL + '/expenses/' + id,
-    method: 'DELETE',
-    // body: JSON.stringify(data, userId),
+    body: JSON.stringify(data),
   })
 }
 

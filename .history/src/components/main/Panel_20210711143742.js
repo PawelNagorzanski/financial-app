@@ -92,11 +92,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       </div>
-      <List
-        expenses={expenses}
-        setExpeneses={setExpeneses}
-        SelectedCategory={SelectedCategory}
-      />
+      <List expenses={expenses} setExpeneses={setExpeneses} />
     </>
   )
 }

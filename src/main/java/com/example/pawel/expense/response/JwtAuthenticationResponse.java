@@ -3,9 +3,11 @@ package com.example.pawel.expense.response;
 public class JwtAuthenticationResponse {
 	private String accessToken;
 	private String tokenType = "Bearer";
+	private Long userId;
 	
-	public JwtAuthenticationResponse(String accessToken) {
+	public JwtAuthenticationResponse(String accessToken, Long userId) {
 		this.accessToken = accessToken;
+		this.userId = userId;
 		
 	}
 
@@ -24,4 +26,15 @@ public class JwtAuthenticationResponse {
 	public void setTokenType(String tokenType) {
 		this.tokenType = tokenType;
 	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	
+	
 }

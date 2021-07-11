@@ -9,7 +9,7 @@ import { components } from 'react-select'
 function App() {
   const initialExpenses = [
     {
-      // id: Math.random() * 100000,
+      id: Math.random() * 100000,
       description: 'Example',
       amount: 0,
       SelectedCategory: [''],
@@ -92,11 +92,7 @@ function App() {
           handleSubmit={handleSubmit}
         />
       </div>
-      <List
-        expenses={expenses}
-        setExpeneses={setExpeneses}
-        SelectedCategory={SelectedCategory}
-      />
+      <List expenses={expenses} setExpeneses={setExpeneses} />
     </>
   )
 }

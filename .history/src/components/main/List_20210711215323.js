@@ -12,6 +12,7 @@ const List = ({ expenses, setExpeneses, SelectedCategory }) => {
 
   return (
     <>
+      {console.log(SelectedCategory)}
       {expenses.map((expense) => {
         return (
           <Item

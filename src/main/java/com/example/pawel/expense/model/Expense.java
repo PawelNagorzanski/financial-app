@@ -19,7 +19,7 @@ public class Expense {
 
 	private Instant date; 
 
-	private int amount;
+	private double amount;
 	
 	private String description;
 
@@ -54,11 +54,11 @@ public class Expense {
 		this.description = description;
 	}
 
-	public int getAmount() {
+	public double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(int amount) {
+	public void setAmount(double amount) {
 		this.amount = amount;
 	}
 	

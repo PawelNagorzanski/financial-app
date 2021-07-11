@@ -1,6 +1,5 @@
 import { ACCESS_TOKEN, API_BASE_URL } from './constants/constants'
 
-const userId = localStorage.getItem('userId')
 export const request = (options) => {
   const headers = new Headers({
     'Content-Type': 'application/json',
@@ -36,8 +35,10 @@ export function siema() {
 }
 
 export function expenseGet() {
+  const userId = localStorage.getItem('userId')
+
   return request({
-    url: API_BASE_URL + '/auth/' + userId + '/expense',
+    url: API_BASE_URL + '/' + userId + '/expenses',
     method: 'GET',
   })
 }
@@ -46,15 +47,7 @@ export function expensePost(data) {
   return request({
     url: API_BASE_URL + '/expense',
     method: 'POST',
-    body: JSON.stringify(data, userId),
-  })
-}
-
-export function expenseDelete(id) {
-  return request({
-    url: API_BASE_URL + '/expenses/' + id,
-    method: 'DELETE',
-    // body: JSON.stringify(data, userId),
+    body: JSON.stringify(data),
   })
 }
 
