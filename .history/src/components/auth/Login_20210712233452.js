@@ -38,14 +38,14 @@ class Login extends Component {
       password: this.state.password.value,
     }
 
-    if (localStorage !== null) {
-      return console.log('zalogowany jestes') // <h2>You are already logged in aplication</h2>
-    } else {
-      login(loginRequest).then((response) => {
-        console.log(response)
-      })
-      this.props.history.push('/panel')
+    if (localStorage.userId == null) {
+      ;<Alelt />
     }
+
+    login(loginRequest).then((response) => {
+      console.log(response)
+    })
+    this.props.history.push('/panel')
   }
 
   render() {

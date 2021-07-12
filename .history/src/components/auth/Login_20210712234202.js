@@ -39,7 +39,7 @@ class Login extends Component {
     }
 
     if (localStorage !== null) {
-      return console.log('zalogowany jestes') // <h2>You are already logged in aplication</h2>
+      return <h2>You are already logged in aplication</h2>
     } else {
       login(loginRequest).then((response) => {
         console.log(response)

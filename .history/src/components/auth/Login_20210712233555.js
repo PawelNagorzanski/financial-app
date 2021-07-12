@@ -38,8 +38,7 @@ class Login extends Component {
       password: this.state.password.value,
     }
 
-    if (localStorage !== null) {
-      return console.log('zalogowany jestes') // <h2>You are already logged in aplication</h2>
+    if (localStorage.userId == null) {
     } else {
       login(loginRequest).then((response) => {
         console.log(response)
