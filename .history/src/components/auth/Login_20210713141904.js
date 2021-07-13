@@ -38,7 +38,7 @@ class Login extends Component {
     this.setState({ alert: { show: true, text } })
     setTimeout(() => {
       this.setState({ alert: { show: false } })
-    }, 4000)
+    }, 2000)
   }
 
   handleSubmit(event) {
@@ -48,9 +48,7 @@ class Login extends Component {
       password: this.state.password.value,
     }
     if (localStorage !== null) {
-      this.handleAlert({
-        text: 'You are already logged in aplication. Please go to /panel',
-      })
+      this.handleAlert({ text: 'You are already logged in aplication' })
       console.log(this.state.alert)
     } else {
       login(loginRequest).then((response) => {

@@ -12,14 +12,9 @@ class Login extends Component {
       password: {
         value: '',
       },
-      alert: {
-        show: false,
-        text: '',
-      },
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-    this.handleAlert = this.handleAlert.bind(this)
   }
 
   handleInputChange(event) {
@@ -34,24 +29,15 @@ class Login extends Component {
     })
   }
 
-  handleAlert({ text }) {
-    this.setState({ alert: { show: true, text } })
-    setTimeout(() => {
-      this.setState({ alert: { show: false } })
-    }, 4000)
-  }
-
   handleSubmit(event) {
     event.preventDefault()
     const loginRequest = {
       email: this.state.email.value,
       password: this.state.password.value,
     }
+
     if (localStorage !== null) {
-      this.handleAlert({
-        text: 'You are already logged in aplication. Please go to /panel',
-      })
-      console.log(this.state.alert)
+      return <Alert text={'You are already logged in aplication'} />
     } else {
       login(loginRequest).then((response) => {
         console.log(response)
@@ -63,8 +49,6 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {this.state.alert.show && <Alert text={this.state.alert.text} />}
-        <Alert />
         <h3>Login</h3>
         <form onSubmit={this.handleSubmit}>
           <input
