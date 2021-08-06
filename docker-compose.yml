@@ -1,0 +1,50 @@
+version: '3'
+services:
+  exp:
+    build: ./exp-backend
+    container_name: exp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysqldb
+    environment:
+      ##SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/exp?verifyServerCertificate=true&useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+      ##SPRING_DATASOURCE_USERNAME: root
+      ##SPRING_DATASOURCE_PASSWORD: root
+      MYSQL_HOST: mysqldb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_PORT: 3306
+    networks:
+      - my-network
+  front:
+    build: ./exp-client
+    ports:
+    - "3000:3000"
+    depends_on:
+      - exp
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+    - "3307:3306"
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      ##MYSQL_PASSWORD: root
+     ##MYSQL_USER: root
+      MYSQL_DATABASE: exp
+      ##MYSQL_HOST: mysqldb
+      ##MYSQL_PORT: 3306
+##volumes:
+##      - db-data:/var/lib/mysql
+    networks:
+      - my-network  
+  
+# Volumes
+#volumes:
+#  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  my-network:

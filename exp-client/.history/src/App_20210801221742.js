@@ -3,7 +3,6 @@ import './App.css'
 import Signup from './components/auth/Signup.js'
 import Login from './components/auth/Login.js'
 import Panel from './components/main/Panel.js'
-import Home from './components/main/Home.js'
 import { Route, withRouter, Switch, useHistory, Link } from 'react-router-dom'
 
 const App = () => {
@@ -17,7 +16,7 @@ const App = () => {
     <>
       <Switch>
         <Route path="/signup" component={Signup}></Route>
-        <Route path="/" component={Home}></Route>
+
         <Route path="/panel" component={Panel}></Route>
         <Route path="/login" component={Login}></Route>
       </Switch>
