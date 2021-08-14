@@ -22,7 +22,6 @@ import lombok.NonNull;
 @Entity
 public class Category {
 
-	//@Id
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	public Long id;

@@ -17,14 +17,14 @@ public class Expense {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private Long id;
 
-	private Instant date; 
+//	private Instant date; 
 
 	private double amount;
 	
 	private String description;
 
-	@ManyToOne
-	private Category category;
+//	@ManyToOne
+//	private Category category;
 
 //	@JsonIgnore
 	@ManyToOne
@@ -38,13 +38,13 @@ public class Expense {
 		this.id = id;
 	}
 
-	public Instant getDate() {
-		return date;
-	}
-
-	public void setDate(Instant date) {
-		this.date = date;
-	}
+//	public Instant getDate() {
+//		return date;
+//	}
+//
+//	public void setDate(Instant date) {
+//		this.date = date;
+//	}
 
 	public String getDescription() {
 		return description;
@@ -62,14 +62,14 @@ public class Expense {
 		this.amount = amount;
 	}
 	
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
-	}
-
+//	public Category getCategory() {
+//		return category;
+//	}
+//
+//	public void setCategory(Category category) {
+//		this.category = category;
+//	}
+//
 	public User getUser() {
 		return user;
 	}
