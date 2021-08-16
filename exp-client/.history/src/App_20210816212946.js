@@ -4,27 +4,27 @@ import Signup from './components/auth/Signup.js'
 import Login from './components/auth/Login.js'
 import Panel from './components/main/Panel.js'
 import { Route, withRouter, Switch, useHistory } from 'react-router-dom'
+let history = useHistory()
 const App = () => {
-  let history = useHistory()
   return (
     <>
       <button
         onClick={() => {
-          history.push('/signup')
+          this.props.history.push('/signup')
         }}
       >
         Go to /signup
       </button>
       <button
         onClick={() => {
-          history.push('/login')
+          this.props.history.push('/login')
         }}
       >
         Go to /login
       </button>
       <button
         onClick={() => {
-          history.push('/panel')
+          this.props.history.push('/panel')
         }}
       >
         Go to /panel

@@ -10,21 +10,21 @@ const App = () => {
     <>
       <button
         onClick={() => {
-          history.push('/signup')
+          this.props.history.push('/signup')
         }}
       >
         Go to /signup
       </button>
       <button
         onClick={() => {
-          history.push('/login')
+          this.props.history.push('/login')
         }}
       >
         Go to /login
       </button>
       <button
         onClick={() => {
-          history.push('/panel')
+          this.props.history.push('/panel')
         }}
       >
         Go to /panel
