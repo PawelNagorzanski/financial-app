@@ -31,19 +31,34 @@ This is a web application which you can use it to manage money. This app has own
 ## Setup
 To clone and run this application, you'll need Git and Node.js (which comes with npm) installed on your computer. From your command line:
 # Clone this repository
-'$ git clone https://github.com/PawelNagorzanski/financial-app.git
 
+```
+$ git clone https://github.com/PawelNagorzanski/financial-app.git
+
+```
 # Go into the repository
+```
 $ cd financial-app
+```
 
 # Install dependencies
+
+```
 $ npm install
 
+```
+
 # Run the app
-$ npm start'
+
+```
+$ npm start
+
+```
 
 After you clone this repository you have to add this code as constans.js inside the constans folder
-'export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api';
+
+```
+export const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8080/api;
 export const ACCESS_TOKEN = 'here is your acces token';
 export const NAME_MIN_LENGTH = 4;
 export const NAME_MAX_LENGTH = 40;
@@ -89,7 +104,8 @@ spring.security.oauth2.client.registration.google.client-secret=HERE IS YOUR ID 
 
 spring.security.oauth2.client.registration.facebook.client-id=HERE IS YOUR ID FOR OAUTH
 spring.security.oauth2.client.registration.facebook.client-secret=HERE IS YOUR ID FOR OAUTH
-'
+
+```
 
 
 ## Project Status
